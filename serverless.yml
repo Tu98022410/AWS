@@ -1,0 +1,63 @@
+org: toshiki
+app: aws-node
+service: aws-node
+
+frameworkVersion: "3"
+
+plugins:
+  - serverless-plugin-typescript
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-southeast-1
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource: "*"
+
+functions:
+  getUser:
+    handler: src/user/get.hello
+    events:
+      - httpApi:
+          path: /user/{id}
+          method: get
+  getPost:
+    handler: src/post/get.hello
+    events:
+      - httpApi:
+          path: /post/{id}
+          method: get
+
+resources: 
+  Resources:
+    usersTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Users
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+    postTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: Posts
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

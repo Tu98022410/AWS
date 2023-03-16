@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.261.0",
+    "@aws-sdk/util-dynamodb": "^3.266.0",
+    "aws-lambda": "^1.0.7"
+  },
+  "name": "aws-node",
+  "description": "<!-- title: 'AWS NodeJS Example' description: 'This template demonstrates how to deploy a NodeJS function running on AWS Lambda using the traditional Serverless Framework.' layout: Doc framework: v3 platform: AWS language: nodeJS priority: 1 authorLink: 'https://github.com/serverless' authorName: 'Serverless, inc.' authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4' -->",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.110",
+    "@types/node": "^18.11.18",
+    "serverless-plugin-typescript": "^2.1.4",
+    "typescript": "^4.9.5",
+    "webpack-cli": "^5.0.1"
+  },
+  "scripts": {
+    "deploy": "serverless deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
